@@ -416,16 +416,82 @@
 
   /* ===== RESPONSIVE ===== */
   @media (max-width: 640px) {
-    .main { padding: 16px; }
-    .step-title { font-size: 17px; padding: 10px 16px 0; }
-    .step-badge-row { padding: 16px 16px 0; }
-    .speech-block { margin: 12px 16px; padding: 12px 14px; }
-    .comments-section { padding: 0 16px 12px; }
-    .answers-section { padding: 0 16px 16px; }
-    .objections-section { padding: 16px; }
-    .back-row { padding: 12px 16px; }
+    /* Header: stack title and controls vertically */
+    .header { padding: 12px 16px; }
+    .header-inner { flex-wrap: wrap; gap: 8px; }
     .header h1 { font-size: 15px; }
-    .tab-btn { padding: 10px 14px; font-size: 13px; }
+    .header-subtitle { font-size: 12px; }
+    .header-controls { order: -1; margin-left: auto; }
+    .step-counter { font-size: 12px; padding: 3px 10px; }
+    .btn-reset { padding: 5px 10px; font-size: 12px; }
+
+    /* Tabs: equal width, comfortable tap targets */
+    .tab-bar { padding: 0; }
+    .tab-btn { flex: 1; justify-content: center; padding: 12px 8px; font-size: 13px; gap: 4px; }
+    .tab-icon { font-size: 14px; }
+
+    /* Breadcrumbs: smaller, scrollable */
+    .breadcrumbs-bar { padding: 8px 16px; }
+    .breadcrumbs-inner { font-size: 12px; }
+    .crumb { padding: 2px 6px; }
+
+    /* Main area */
+    .main { padding: 12px; }
+
+    /* Step card */
+    .step-title { font-size: 17px; padding: 10px 16px 0; }
+    .step-badge-row { padding: 12px 16px 0; }
+    .step-badge { font-size: 11px; padding: 3px 8px; }
+    .step-ref { font-size: 11px; }
+
+    /* Speech */
+    .speech-block { margin: 12px 16px; padding: 12px 14px; }
+    .speech-text { font-size: 14px; }
+
+    /* Comments */
+    .comments-section { padding: 0 16px 12px; }
+    .comment-bubble { padding: 10px 12px; font-size: 12px; gap: 8px; }
+
+    /* Answers: larger touch targets (min 44px per Apple/Google guidelines) */
+    .answers-section { padding: 0 16px 16px; }
+    .answer-btn { padding: 14px 16px; font-size: 14px; min-height: 48px; gap: 10px; }
+    .answer-emoji { font-size: 18px; }
+
+    /* Objections: bigger tap targets */
+    .objections-section { padding: 16px; }
+    .objection-trigger { padding: 14px 16px; font-size: 13px; min-height: 48px; }
+    .objection-body { padding: 12px 14px 14px; font-size: 13px; }
+    .objection-body .answer-btn { padding: 12px 14px; font-size: 13px; }
+
+    /* Back button */
+    .back-row { padding: 12px 16px; }
+    .btn-back { padding: 10px 16px; font-size: 13px; }
+
+    /* Minimap FAB */
+    .minimap-toggle { width: 44px; height: 44px; bottom: 16px; right: 16px; font-size: 18px; }
+    .minimap-panel { width: 95%; padding: 16px; max-height: 85vh; }
+    .minimap-panel h2 { font-size: 16px; }
+    .minimap-list li { padding: 10px 12px; font-size: 13px; }
+
+    /* Graph: full width, scrollable */
+    .graph-toolbar { padding: 10px 12px; gap: 6px; }
+    .graph-legend { margin-left: 0; gap: 10px; font-size: 11px; }
+    .graph-viewport { min-height: 400px; max-height: calc(100vh - 200px); -webkit-overflow-scrolling: touch; }
+
+    /* Issues */
+    .issue-card-header { padding: 12px 16px; }
+    .issue-card-body { padding: 12px 16px; }
+    .issue-card-header .issue-ref { margin-left: 0; font-size: 11px; }
+    .issues-count-badge { font-size: 10px; }
+  }
+
+  /* Small phones (iPhone SE, etc.) */
+  @media (max-width: 380px) {
+    .header h1 { font-size: 13px; }
+    .header-subtitle { display: none; }
+    .step-title { font-size: 15px; }
+    .answer-btn { padding: 12px 14px; font-size: 13px; }
+    .speech-text { font-size: 13px; }
   }
 </style>
 </head>
