@@ -261,6 +261,24 @@
   .objection-body .speech-block { margin: 8px 0; padding: 12px 16px; }
   .objection-body .answer-btn { margin-top: 8px; padding: 10px 14px; font-size: 14px; }
 
+  /* ===== ESCALATION (global no-answer button) ===== */
+  .escalation-section {
+    border-top: 1px solid var(--gray-200); padding: 20px 24px 24px;
+  }
+  .btn-escalation {
+    display: flex; align-items: center; gap: 12px; width: 100%;
+    text-align: left; background: #fff8f0; border: 2px dashed #f57c00;
+    border-radius: 10px; padding: 14px 18px; font-size: 14px;
+    color: #bf360c; cursor: pointer; transition: var(--transition); line-height: 1.4;
+  }
+  .btn-escalation:hover { background: #ffe8cc; border-style: solid; }
+  .btn-escalation:active { transform: scale(0.985); }
+  .btn-escalation .arrow {
+    margin-left: auto; color: #f57c00; transition: var(--transition);
+    flex-shrink: 0; font-size: 18px;
+  }
+  .btn-escalation:hover .arrow { transform: translateX(3px); }
+
   /* ===== BACK ===== */
   .back-row { padding: 16px 24px; border-top: 1px solid var(--gray-200); }
   .btn-back {
@@ -606,7 +624,7 @@ const ALL_QA = [
 
 // Steps that should NOT show objections/Q&A (greeting, endings, reschedules)
 const NO_OBJECTIONS_STEPS = new Set([
-  "greeting", "reschedule_hour", "reschedule_later", "end_reschedule", "end_polite_decline", "end_escalation", "end_success"
+  "greeting", "reschedule_hour", "reschedule_later", "end_reschedule", "unknown_question", "end_polite_decline", "end_escalation", "end_success"
 ]);
 
 const STEPS = {
@@ -1207,6 +1225,13 @@ function renderStepCard(step) {
       html += `<div class="speech-text">${formatSpeech(qa.response)}</div></div>`;
       html += '</div></div>';
     });
+    html += '</div>';
+
+    // Global escalation: no answer to client's question / objection
+    html += '<div class="escalation-section">';
+    html += `<button class="btn-escalation" onclick="goToStep('unknown_question')">`;
+    html += `<span class="answer-emoji">🆘</span><span>Нет ответа на вопрос/возражение клиента — эскалация на менеджера</span>`;
+    html += `<span class="arrow">&#8250;</span></button>`;
     html += '</div>';
   }
 
