@@ -606,7 +606,7 @@ const ALL_QA = [
 
 // Steps that should NOT show objections/Q&A (greeting, endings, reschedules)
 const NO_OBJECTIONS_STEPS = new Set([
-  "greeting", "end_reschedule", "end_polite_decline", "end_escalation", "end_success"
+  "greeting", "reschedule_hour", "reschedule_later", "end_reschedule", "end_polite_decline", "end_escalation", "end_success"
 ]);
 
 const STEPS = {
@@ -665,7 +665,8 @@ const STEPS = {
     ref: "",
     speech: `[Звонок завершён. Перезвон запланирован на согласованное время.]`,
     comments: [
-      { type: "info", text: "В системе фиксируется задача на повторный звонок." }
+      { type: "info", text: "В системе фиксируется задача на повторный звонок." },
+      { type: "warn", discuss: true, text: "Требует проработки — не факт, что мы технически сможем реализовать автоматический повторный звонок в согласованное время. Нужно уточнить с разработкой." }
     ],
     answers: [
       { text: "Начать сценарий заново", emoji: "🔄", next: "greeting" }
